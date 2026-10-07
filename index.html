@@ -7,17 +7,48 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div id="app">
-  <nav id="rail">
-    <div class="logo">LS</div>
-    <button data-view="chats" class="active" title="Chats">💬</button>
-    <button data-view="cloud" title="Cloud">☁️</button>
-    <button data-view="tasks" title="Aufgaben">✅</button>
-    <button data-view="calendar" title="Kalender">📅</button>
-    <div class="spacer"></div>
-    <button data-view="settings" title="Personalisieren">🎨</button>
+<div id="login" class="login">
+  <form id="loginForm" class="card">
+    <h1>LernSax Neo</h1>
+    <p class="muted">Melde dich mit deinem LernSax-Konto an.</p>
+    <input id="user" placeholder="Login (z.B. name@schule.lernsax.de)" autocomplete="username" required>
+    <input id="pass" type="password" placeholder="Passwort" autocomplete="current-password" required>
+    <details><summary>Erweitert</summary>
+      <input id="proxy" placeholder="Optional: Proxy-URL (falls direkter Zugriff blockiert)">
+    </details>
+    <button type="submit">Anmelden</button>
+    <p id="err" class="err"></p>
+    <p class="muted small">Deine Zugangsdaten gehen nur an lernsax.de (bzw. deinen Proxy) und werden nicht gespeichert, nur die Sitzung im Browser.</p>
+  </form>
+</div>
+
+<div id="app" class="app hidden">
+  <nav class="side">
+    <button data-tab="chats" class="active" title="Chats">💬</button>
+    <button data-tab="cloud" title="Cloud">☁️</button>
+    <button data-tab="settings" title="Einstellungen">🎨</button>
+    <button id="logout" title="Abmelden">⏻</button>
   </nav>
-  <main id="main"></main>
+  <section id="tab-chats" class="tab">
+    <aside class="list" id="chatList"></aside>
+    <main class="chat"><header id="chatHead">Wähle einen Chat</header><div id="msgs" class="msgs"></div>
+      <form id="sendForm"><input id="msgIn" placeholder="Nachricht schreiben…"><button>➤</button></form></main>
+  </section>
+  <section id="tab-cloud" class="tab hidden"><div class="files" id="files"></div></section>
+  <section id="tab-settings" class="tab hidden">
+    <div class="card settings">
+      <h2>Personalisieren</h2>
+      <label>Design <select id="sTheme"><option value="dark">Dunkel</option><option value="light">Hell</option></select></label>
+      <label>Akzentfarbe <input type="color" id="sAccent"></label>
+      <label>Hintergrundfarbe Chat <input type="color" id="sBg"></label>
+      <label>Hintergrundbild (URL) <input id="sBgImg" placeholder="https://…"></label>
+      <label>Eigenes Bild <input type="file" id="sBgFile" accept="image/*"></label>
+      <label>Schrift <select id="sFont"><option>system-ui</option><option>Georgia</option><option>monospace</option><option>Comic Sans MS</option></select></label>
+      <label>Ecken <input type="range" id="sRadius" min="0" max="28"></label>
+      <label>Seitenleiste <select id="sSide"><option value="left">Links</option><option value="right">Rechts</option><option value="bottom">Unten</option></select></label>
+      <button id="sReset">Zurücksetzen</button>
+    </div>
+  </section>
 </div>
 <script src="app.js"></script>
 </body>

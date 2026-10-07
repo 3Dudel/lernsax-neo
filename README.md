@@ -1,9 +1,12 @@
 # LernSax Neo
 
-Modernes, personalisierbares Frontend-Konzept für LernSax – im Stil eines Messengers (Chats) und einer Cloud.
+Modernes, personalisierbares Frontend für [LernSax](https://www.lernsax.de) mit Chat- (WhatsApp-Stil) und Cloud-Ansicht.
 
-**Features:** Chats, Cloud mit Drag & Drop, Aufgaben, Kalender, Personalisierung (Hell/Dunkel, Akzentfarbe, Hintergrundbild, Schrift, Eckenradius, Seitenleiste links/rechts, kompakte Ansicht). Einstellungen werden lokal im Browser gespeichert.
+- Login mit echtem LernSax-Konto (JSON-RPC `https://www.lernsax.de/jsonrpc.php`)
+- Personalisierung: Hell/Dunkel, Akzentfarbe, Hintergrund (Farbe/URL/eigenes Bild), Schrift, Ecken, Position der Navigation
+- Einstellungen werden lokal im Browser gespeichert
 
-> Hinweis: Inoffizielles Design-Konzept mit Demo-Daten, keine Verbindung zu echten LernSax-Konten.
+## Hinweis
+Blockiert der Browser den direkten Zugriff auf lernsax.de (CORS), muss unter *Erweitert* beim Login eine Proxy-URL eingetragen werden (z. B. ein eigener Cloudflare Worker, der `?url=` weiterleitet und CORS-Header setzt).
 
-Live: https://3dudel.github.io/lernsax-neo/
+Inoffizielles Projekt, nicht mit LernSax verbunden.
